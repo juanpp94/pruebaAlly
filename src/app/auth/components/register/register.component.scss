@@ -24,6 +24,16 @@
         }
       }
 
+      .password-container {
+        display: flex;
+        width: 100%;
+
+        .input-container {
+          width: 50%
+        }
+
+      }
+
       .input-container {
         display: flex;
         flex-direction: column;
@@ -33,7 +43,7 @@
         input {
           padding: 10px;
           border: 1px solid gray;
-          border-radius: 10px;
+          border-radius: 5px;
         }
 
         label {

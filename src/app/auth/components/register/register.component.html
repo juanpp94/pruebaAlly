@@ -6,31 +6,32 @@
     <form action="">
       <div class="input-container">
         <label> Name</label>
-        <input type="text" [(ngModel)]="nameValue" [ngModelOptions]="{standalone: true}" (input)="onNameChange($event)">
+        <input placeholder="Ingrese nombre completo" type="text" [(ngModel)]="nameValue" [ngModelOptions]="{standalone: true}" (input)="onNameChange($event)">
         <div *ngIf="invalidName" class="error-message">
         <p>{{invalidNameMessage}}</p>
         </div>
       </div>
-      <div class="input-container">
-        <label> Email</label>
-        <input type="email" [(ngModel)]="emailValue" [ngModelOptions]="{standalone: true}" (input)="onEmailChange($event)">
-        <div *ngIf=" invalidEmail">
-        <p>{{ invalidEmailMessage}}</p>
-        </div>
-      </div>
-
-      <div class="input-container">
+      <div class="password-container">
+        <div class="input-container">
         <label>Password</label>
-        <input (input)="onPassword1Change($event)" [(ngModel)]="passwordValue1" type="password" [ngModelOptions]="{standalone: true}">
-        <div *ngIf=" invalidPassword">
+        <input placeholder="Ingrese password" (input)="onPassword1Change($event)" [(ngModel)]="passwordValue1" type="password" [ngModelOptions]="{standalone: true}">
+        <div *ngIf=" invalidPassword" class="error-message">
           <p>{{ invalidPasswordMessage}}</p>
         </div>
       </div>
        <div class="input-container">
         <label>Confirm Password</label>
-        <input (input)="onPassword2Change($event)" [(ngModel)]="passwordValue2" type="password" [ngModelOptions]="{standalone: true}">
-        <div *ngIf="unmatchingPassword">
+        <input placeholder="Confirm password" (input)="onPassword2Change($event)" [(ngModel)]="passwordValue2" type="password" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="unmatchingPassword" class="error-message">
           <p>{{unmatchingPasswordMessage}}</p>
+        </div>
+      </div>
+      </div>
+      <div class="input-container">
+        <label> Email</label>
+        <input placeholder="Ingrese email" type="email" [(ngModel)]="emailValue" [ngModelOptions]="{standalone: true}" (input)="onEmailChange($event)">
+        <div *ngIf=" invalidEmail" class="error-message">
+        <p>{{ invalidEmailMessage}}</p>
         </div>
       </div>
 
