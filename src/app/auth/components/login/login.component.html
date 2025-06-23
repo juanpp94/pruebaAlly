@@ -1,0 +1,28 @@
+<div class="login-container">
+  <div class="login-form">
+    <header class="header">
+    <p>LOGIN</p>
+    </header>
+    <form action="">
+      <div class="input-container">
+        <label> Email</label>
+          <input type="email" [(ngModel)]="emailValue" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="input-container">
+        <label>Password</label>
+        <input [(ngModel)]="passwordValue" type="password" [ngModelOptions]="{standalone: true}">
+      </div>
+
+      <div (click)="login()" class="login-button">
+        <button >LOGIN</button>
+      </div>
+    </form>
+    <footer>
+      <p>¿Necesitas una cuenta? <a (click)="goToRegister()">Regístrate</a></p>
+    </footer>
+
+  </div>
+  <div class="error-message" *ngIf="loginError">
+      <p>{{this.errorMessage}}</p>
+    </div>
+</div>
