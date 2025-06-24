@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { User } from '../../../../app/core/models/user.interface';
 import { CountryService } from 'src/app/core/services/country.service';
+import { TaskService } from 'src/app/core/services/task.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,13 +17,21 @@ export class DashboardComponent {
   selectedCountry: any = null;
   currentDateAndTime: any = {};
   countryWeatherInfo: any = {};
+  tasks: any[] = [];
+  users: User[] = [];
+  usersPage: User[] = [];
+  currentPage: number = 1;
+  perPage: number = 2;
+  totalPages: number = 0;
 
-  constructor(private countryService: CountryService) {
+  constructor(private countryService: CountryService, private taskService: TaskService, private userService: UserService) {
 
   }
 
   ngOnInit() {
     this.getCountries();
+    this.getTasks();
+    this.getUsers();
 
 
   }
@@ -31,6 +42,17 @@ export class DashboardComponent {
     }
 
   }
+
+  getTasks() {
+    this.tasks = this.taskService.getTasks();
+  }
+
+  getUsers() {
+    this.users = this.userService.getUsers();
+    this.totalPages = Math.ceil(this.users.length / this.perPage);
+    this.loadPage(this.currentPage);
+  }
+
 
   getCountryWeather() {
     this.countryService.getWeather(this.selectedCountry?.capital).subscribe({
@@ -113,6 +135,39 @@ export class DashboardComponent {
   return { fecha, hora };
 }
 
+ loadPage(pagina: number) {
+    this.currentPage = pagina;
+    const inicio = (pagina - 1) * this.perPage;
+    const fin = inicio + this.perPage;
+    this.usersPage = this.users.slice(inicio, fin);
+  }
+
+  firstPage() {
+    this.loadPage(1);
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.loadPage(this.currentPage - 1);
+    }
+  }
+
+   nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.loadPage(this.currentPage + 1);
+    }
+   }
+
+    lastPage() {
+    this.loadPage(this.totalPages);
+    }
+
+    rangeText(): string {
+    const inicio = (this.currentPage - 1) * this.perPage + 1;
+    const fin = Math.min(this.currentPage * this.perPage, this.users.length);
+    return `Mostrar registros del ${inicio} al ${fin} de ${this.users.length} usuarios registrados`;
+  }
+  }
 
 
 
@@ -120,4 +175,5 @@ export class DashboardComponent {
 
 
 
-}
+
+
