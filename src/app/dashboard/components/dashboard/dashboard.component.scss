@@ -255,7 +255,6 @@ section {
             margin: 0 auto;
             margin-top: 20px;
             margin-bottom: 20px;
-            border: 1px solid red;
             display: flex;
             flex-direction: column;
             p {
@@ -265,17 +264,20 @@ section {
             .table-navigation {
               align-self: end;
 
-              button {
+              .nav-button {
                 background: white;
                 padding: 10px;
                 border: 1px solid gray;
+                cursor: pointer;;
               }
 
               .current-page {
                 background: #0161f2;
+                padding: 10px;
+                border: 1px solid gray;
               }
 
-              button:hover {
+              .nav-button:hover {
                 background: #f8f8f8;
                 color: gray;
               }
