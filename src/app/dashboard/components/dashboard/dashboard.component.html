@@ -26,12 +26,12 @@
             </div>
          </div>
 
-         <div class="card-container">
+         <div class="card-container ">
             <div class="card-info">
               <header >
               <p class="title">OTRAS TAREAS</p>
               </header>
-              <ul>
+              <ul class="todo-list">
                 <li>Realizar documentación en swagger</li>
                 <li>Tomar curso React</li>
                 <li>Estudiar SpringBoot</li>
@@ -48,12 +48,14 @@
               <p class="title">CLIMA</p>
               </header>
               <div class="weather-container">
-                <picture class="weather-image">
-                  <img src="../../../../assets/weather-image.png" alt="cloudy-weather">
+                <picture *ngIf="countryWeatherInfo" class="weather-image">
+                  <img *ngIf="countryWeatherInfo['weather'] && countryWeatherInfo['weather'].length > 0 && countryWeatherInfo['weather'][0]['main'] === 'Clouds'"  src="../../../../assets/nublado.png" alt="nublado">
+                  <img *ngIf="countryWeatherInfo['weather'] && countryWeatherInfo['weather'].length > 0 && countryWeatherInfo['weather'][0]['main'] === 'Clear'"  src="../../../../assets/soleado.png" alt="soleado">
+                  <img *ngIf="countryWeatherInfo['weather'] && countryWeatherInfo['weather'].length > 0 && countryWeatherInfo['weather'][0]['main'] === 'Rain'"  src="../../../../assets/lluvioso.png" alt="lluvioso">
                 </picture>
                 <div class="weather-info">
-                  <p> 18 C</p>
-                  <p>Partly cloudy</p>
+                  <p> {{countryWeatherInfo?.main?.temp}} °C</p>
+                  <p *ngIf=" countryWeatherInfo?.weather && countryWeatherInfo?.weather.length > 0">{{countryWeatherInfo?.weather[0].main}} </p>
                 </div>
 
               </div>
@@ -63,12 +65,12 @@
          </div>
 
          <div class="card-container">
-            <div class="card-info">
+            <div class="card-info timezones">
               <header >
               <p class="title">ZONAS HORARIAS DISPONIBLES</p>
               </header>
               <ul>
-                <li *ngFor="let timezone of selectedCountry?.timezones">
+                <li (click)="getTimeAndDate(timezone)" *ngFor="let timezone of selectedCountry?.timezones">
                   <u>{{timezone}}</u>
                 </li>
               </ul>
@@ -82,8 +84,8 @@
               <header >
               <p class="title">HORA</p>
               </header>
-              <p><span>11/1/2021</span><span>, 7:56:47 PM</span></p>
-              <p>America/Mexico_city</p>
+              <p><span>{{currentDateAndTime.fecha}}</span><span>, {{currentDateAndTime.hora}}</span></p>
+              <p>{{selectedCountry?.region}}/{{selectedCountry?.capital}}</p>
 
 
             </div>
@@ -97,27 +99,13 @@
               </header>
               <picture (click)="selectCountry(country)" *ngFor="let country of countriesInfo" class="country">
                 <img [src]="country.flags.png" [alt]="country.flags.alt">
-                <p>{{country.name.common}}</p>
+                <p class="country-pointer">{{country.name.common}}</p>
               </picture>
 
 
             </div>
          </div>
 
-         <div class="card-container">
-            <div class="card-info">
-              <header >
-              <p class="title">OTRAS TAREAS</p>
-              </header>
-              <ul>
-                <li>Realizar documentación en swagger</li>
-                <li>Tomar curso React</li>
-                <li>Estudiar SpringBoot</li>
-              </ul>
-
-
-            </div>
-         </div>
       </div>
     </section>
 

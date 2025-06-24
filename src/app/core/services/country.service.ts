@@ -9,6 +9,8 @@ import { environment } from '../../../environments/environment';
 export class CountryService {
 
   api: string = environment.api;
+  apiWeather: string = environment.apiWeather;
+  apiWeatherKey: string = environment.apiWeatherKey;
 
   constructor(private http: HttpClient) { }
 
@@ -16,4 +18,10 @@ export class CountryService {
   getCountry(country: string): Observable<any> {
     return this.http.get<any>(`${this.api}/name/${country}`);
   }
+
+  getWeather(city: string): Observable<any> {
+    return this.http.get<any>(`${this.apiWeather}?q=${city}&appid=${this.apiWeatherKey}&units=metric`)
+  }
+
+
 }

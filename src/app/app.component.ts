@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from './core/models/user.interface';
+import { TaskService } from './core/services/task.service';
+import { UserService } from './core/services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,11 @@ import { User } from './core/models/user.interface';
 })
 export class AppComponent {
   title = 'pruebaAlly';
+  tasks: any[] = [
+  { name: 'Realizar documentación en Swagger', completed: true },
+  { name: 'Tomar curso React', completed: false },
+  { name: 'Estudiar SpringBoot', completed: false }
+];
 //   users: any[] = [
 //   { "id": 1, "nombre": "Juan Pérez", "email": "juan.perez@example.com", "password": "pass1234" },
 //   { "id": 2, "nombre": "Ana Gómez", "email": "ana.gomez@example.com", "password": "qwerty123" },
@@ -22,11 +29,29 @@ export class AppComponent {
 // ]
 users: any[] = [];
 
+constructor(private taskService: TaskService, private userService: UserService) {
+
+}
+
   ngOnInit() {
+    this.initDB();
+  }
+
+
+  initDB() {
+    this.addTasks();
+    this.addUsers();
+  }
+
+  addUsers() {
     for(let i = 0; i < this.users.length; i++) {
       this.users[i]['fechaRegistro'] = new Date();
       this.users[i]['fechaUltimoLogin'] = new Date();
     }
-    localStorage.setItem('users',JSON.stringify(this.users));
+    this.userService.addUsers(this.users);
+  }
+
+  addTasks() {
+    this.taskService.addTasks(this.tasks);
   }
 }
