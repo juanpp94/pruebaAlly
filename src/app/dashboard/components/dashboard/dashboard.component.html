@@ -1,0 +1,125 @@
+<section>
+  <nav class="sidebar">
+    <ul>
+      <li>Dashboard</li>
+      <li>Weather</li>
+      <li>Usuarios</li>
+    </ul>
+  </nav>
+  <main class="main-section">
+    <header >
+
+    </header>
+    <section class="main-content">
+      <div class="first-column">
+         <div class="card-container">
+            <div class="card-info">
+              <header >
+              <p class="title">PAÍS SELECCIONADO</p>
+              </header>
+              <p>{{selectedCountry?.name.common}}</p>
+              <p>Capital: {{selectedCountry?.capital}}</p>
+              <p>Region: {{selectedCountry?.region}}</p>
+              <p><span>Latitud: {{selectedCountry?.latlng[0]}}</span><span>  Longitud: {{selectedCountry?.latlng[1]}}</span></p>
+
+
+            </div>
+         </div>
+
+         <div class="card-container">
+            <div class="card-info">
+              <header >
+              <p class="title">OTRAS TAREAS</p>
+              </header>
+              <ul>
+                <li>Realizar documentación en swagger</li>
+                <li>Tomar curso React</li>
+                <li>Estudiar SpringBoot</li>
+              </ul>
+
+
+            </div>
+         </div>
+      </div>
+      <div class="second-column">
+         <div class="card-container">
+            <div class="card-info">
+              <header >
+              <p class="title">CLIMA</p>
+              </header>
+              <div class="weather-container">
+                <picture class="weather-image">
+                  <img src="../../../../assets/weather-image.png" alt="cloudy-weather">
+                </picture>
+                <div class="weather-info">
+                  <p> 18 C</p>
+                  <p>Partly cloudy</p>
+                </div>
+
+              </div>
+
+
+            </div>
+         </div>
+
+         <div class="card-container">
+            <div class="card-info">
+              <header >
+              <p class="title">ZONAS HORARIAS DISPONIBLES</p>
+              </header>
+              <ul>
+                <li *ngFor="let timezone of selectedCountry?.timezones">
+                  <u>{{timezone}}</u>
+                </li>
+              </ul>
+
+
+            </div>
+         </div>
+
+          <div class="card-container">
+            <div class="card-info">
+              <header >
+              <p class="title">HORA</p>
+              </header>
+              <p><span>11/1/2021</span><span>, 7:56:47 PM</span></p>
+              <p>America/Mexico_city</p>
+
+
+            </div>
+         </div>
+      </div>
+      <div class="third-column">
+         <div class="card-container">
+            <div class="card-info">
+              <header >
+              <p class="title">PAÍSES DISPONIBLES</p>
+              </header>
+              <picture (click)="selectCountry(country)" *ngFor="let country of countriesInfo" class="country">
+                <img [src]="country.flags.png" [alt]="country.flags.alt">
+                <p>{{country.name.common}}</p>
+              </picture>
+
+
+            </div>
+         </div>
+
+         <div class="card-container">
+            <div class="card-info">
+              <header >
+              <p class="title">OTRAS TAREAS</p>
+              </header>
+              <ul>
+                <li>Realizar documentación en swagger</li>
+                <li>Tomar curso React</li>
+                <li>Estudiar SpringBoot</li>
+              </ul>
+
+
+            </div>
+         </div>
+      </div>
+    </section>
+
+  </main>
+</section>

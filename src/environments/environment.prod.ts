@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://rest.apistaging.plaam.com/v1'
+  api: 'https://restcountries.com/v3.1'
 }
