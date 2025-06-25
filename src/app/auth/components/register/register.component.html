@@ -1,8 +1,6 @@
 <div class="register-container">
   <div class="register-form">
-    <header class="header">
-    <p>REGISTRO</p>
-    </header>
+    <app-card-header title='REGISTRO'></app-card-header>
     <form action="">
       <div class="input-container">
         <label> Name</label>
@@ -34,19 +32,15 @@
         <p>{{ invalidEmailMessage}}</p>
         </div>
       </div>
-
-
-    </form>
-    <footer>
       <div class="register-button">
         <button (click)="register()" >REGISTER</button>
       </div>
-
-      <p>¿Ya tienes una cuenta? <a (click)="goToLogin()">Iniciar sesión</a></p>
-    </footer>
+    </form>
+    <app-card-footer question='¿Ya tienes una cuenta?' action='Iniciar sesión' link='/auth/login'></app-card-footer>
 
   </div>
   <div class="error-message" *ngIf="registerError">
       <p>{{this.errorMessage}}</p>
   </div>
 </div>
+

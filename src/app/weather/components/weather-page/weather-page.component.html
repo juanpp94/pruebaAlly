@@ -2,9 +2,7 @@
       <div class="first-column">
          <div class="card-container">
             <div class="card-info">
-              <header >
-              <p class="title">PAÍS SELECCIONADO</p>
-              </header>
+              <app-card-header title='PAÍS SELECCIONADO'></app-card-header>
               <p>{{selectedCountry?.name.common}}</p>
               <p>Capital: {{selectedCountry?.capital}}</p>
               <p>Region: {{selectedCountry?.region}}</p>
@@ -16,9 +14,7 @@
 
          <div class="card-container ">
             <div class="card-info">
-              <header >
-              <p class="title">OTRAS TAREAS</p>
-              </header>
+              <app-card-header title='OTRAS TAREAS'></app-card-header>
               <ul class="todo-list">
                 <li *ngFor="let task of tasks" [class.completed]="task.completed">{{task.name}}</li>
               </ul>
@@ -30,9 +26,7 @@
       <div class="second-column">
          <div class="card-container">
             <div class="card-info">
-              <header >
-              <p class="title">CLIMA</p>
-              </header>
+              <app-card-header title='CLIMA'></app-card-header>
               <div class="weather-container">
                 <picture *ngIf="countryWeatherInfo" class="weather-image">
                   <img *ngIf="countryWeatherInfo['weather'] && countryWeatherInfo['weather'].length > 0 && countryWeatherInfo['weather'][0]['main'] === 'Clouds'"  src="../../../../assets/nublado.png" alt="nublado">
@@ -52,9 +46,7 @@
 
          <div class="card-container">
             <div class="card-info timezones">
-              <header >
-              <p class="title">ZONAS HORARIAS DISPONIBLES</p>
-              </header>
+              <app-card-header title='ZONAS HORARIAS DISPONIBLES'></app-card-header>
               <ul>
                 <li (click)="getTimeAndDate(timezone)" *ngFor="let timezone of selectedCountry?.timezones">
                   <u>{{timezone}}</u>
@@ -67,9 +59,7 @@
 
           <div class="card-container">
             <div class="card-info">
-              <header >
-              <p class="title">HORA</p>
-              </header>
+              <app-card-header title='HORA'></app-card-header>
               <p><span>{{currentDateAndTime.fecha}}</span><span>, {{currentDateAndTime.hora}}</span></p>
               <p>{{selectedCountry?.region}}/{{selectedCountry?.capital}}</p>
 
@@ -80,9 +70,7 @@
       <div class="third-column">
          <div class="card-container">
             <div class="card-info">
-              <header >
-              <p class="title">PAÍSES DISPONIBLES</p>
-              </header>
+              <app-card-header title='PAÍSES DISPONIBLES'></app-card-header>
               <picture (click)="selectCountry(country)" *ngFor="let country of countriesInfo" class="country">
                 <img [src]="country.flags.png" [alt]="country.flags.alt">
                 <p class="country-pointer">{{country.name.common}}</p>

@@ -1,0 +1,15 @@
+<table>
+                  <thead>
+                    <tr>
+                      <th *ngFor="let column of columns">{{column}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of usersPage">
+                      <td>{{ user.nombre }}</td>
+                      <td>{{ user.email }}</td>
+                      <td>{{ user.fechaRegistro | formatDateTime }}</td>
+                      <td>{{ user.fechaUltimoLogin | formatDateTime }}</td>
+                    </tr>
+                  </tbody>
+                </table>

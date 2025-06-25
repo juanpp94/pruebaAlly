@@ -72,18 +72,7 @@
               }
             }
 
-           table {
-            border-collapse: collapse;
-            width: 90%;
-            margin: 0 auto;
-            margin-top: 20px;
 
-            th, td {
-              border-right: 1px solid black;
-              padding: 8px;
-              text-align: left;
-            }
-          }
 
           footer {
             width: 90%;
@@ -96,27 +85,6 @@
               padding: 0;
             }
 
-            .table-navigation {
-              align-self: end;
-
-              .nav-button {
-                background: white;
-                padding: 10px;
-                border: 1px solid gray;
-                cursor: pointer;;
-              }
-
-              .current-page {
-                background: #0161f2;
-                padding: 10px;
-                border: 1px solid gray;
-              }
-
-              .nav-button:hover {
-                background: #f8f8f8;
-                color: gray;
-              }
-            }
           }
 
 

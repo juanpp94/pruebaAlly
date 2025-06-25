@@ -1,39 +1,21 @@
 <section class="user-content">
         <div class="card-container">
               <div class="card-info">
-                <header >
-                  <p class="title">USUARIOS</p>
-                </header>
+                <app-card-header title="USUARIOS"></app-card-header>
 
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Email</th>
-                      <th>Fecha Registro</th>
-                      <th>Último Login</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let user of usersPage">
-                      <td>{{ user.nombre }}</td>
-                      <td>{{ user.email }}</td>
-                      <td>{{ user.fechaRegistro | formatDateTime }}</td>
-                      <td>{{ user.fechaUltimoLogin | formatDateTime }}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <app-user-table [columns]="columns" [usersPage]="usersPage"></app-user-table>
 
                 <footer>
-                  <p>{{ rangeText() }}</p>
+                  <app-table-pagination
+                  (onFirstPage)="firstPage()"
+                  (onPreviousPage)="previousPage()"
+                  (onLastPage)="lastPage()"
+                  (onNextPage)="nextPage()"
+                  [currentPage]="currentPage"
+                  [totalPages]="totalPages"
+                  [rangeText]="rangeText()"
+                  ></app-table-pagination>
 
-                  <div class="table-navigation">
-                      <button class="nav-button" (click)="firstPage()" [disabled]="currentPage === 1">Primero</button>
-                      <button class="nav-button" (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
-                      <button class="current-page">{{currentPage}}</button>
-                      <button class="nav-button" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
-                      <button class="nav-button" (click)="lastPage()" [disabled]="currentPage === totalPages">Último</button>
-                  </div>
                 </footer>
 
 

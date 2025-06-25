@@ -1,0 +1,8 @@
+<p>{{rangeText}}</p>
+<div class="table-navigation">
+  <button class="nav-button" (click)="firstPage()" [disabled]="currentPage === 1">Primero</button>
+  <button class="nav-button" (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+  <button class="current-page">{{currentPage}}</button>
+  <button class="nav-button" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  <button class="nav-button" (click)="lastPage()" [disabled]="currentPage === totalPages">Último</button>
+</div>

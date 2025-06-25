@@ -14,6 +14,7 @@ export class UsersPageComponent {
       currentPage: number = 1;
       perPage: number = 2;
       totalPages: number = 0;
+      columns = ['Nombre','Email','Fecha Registro','Último Login'];
 
     constructor(private userService: UserService) {
 

@@ -1,8 +1,9 @@
 <div class="login-container">
   <div class="login-form">
-    <header class="header">
+    <!-- <header class="header">
     <p>LOGIN</p>
-    </header>
+    </header> -->
+    <app-card-header title='LOGIN'></app-card-header>
     <form action="">
       <div class="input-container">
         <label> Email</label>
@@ -17,9 +18,8 @@
         <button >LOGIN</button>
       </div>
     </form>
-    <footer>
-      <p>¿Necesitas una cuenta? <a (click)="goToRegister()">Regístrate</a></p>
-    </footer>
+    <app-card-footer question='¿Necesitas una cuenta?' action='Regístrate' link='/auth/register'></app-card-footer>
+
 
   </div>
   <div class="error-message" *ngIf="loginError">
