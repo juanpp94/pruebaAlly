@@ -46,4 +46,7 @@
     </footer>
 
   </div>
+  <div class="error-message" *ngIf="registerError">
+      <p>{{this.errorMessage}}</p>
+  </div>
 </div>

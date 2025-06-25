@@ -22,6 +22,8 @@ export class RegisterComponent {
   invalidNameMessage: string = "The name can only contains letter and can't be empty";
   invalidPasswordMessage: string = 'The password is invalid';
   unmatchingPasswordMessage: string = "Passwords don't match"
+  errorMessage: string = 'The user is already registered on the platform. Please login';
+  registerError: boolean = false;
 
 
 
@@ -29,11 +31,14 @@ export class RegisterComponent {
     }
 
   register() {
+    this.registerError = false;
     let registrationStatus = this.authService.register(this.emailValue,this.passwordValue1,this.nameValue);
     if(registrationStatus) {
       console.log('registro exitoso');
+      this.router.navigateByUrl("/weather")
     } else {
       console.log('registro no exitoso');
+      this.registerError = true;
     }
   }
 
@@ -116,6 +121,7 @@ export class RegisterComponent {
       console.log('ok');
     } else {
       console.log('el usuario ya estaba registrado');
+      this.registerError = true;
     }
   }
 

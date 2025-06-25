@@ -1,0 +1,5 @@
+<nav class="sidebar">
+    <ul>
+      <li (click)="goTo(route.link)" [class.active]="activeRoute === route.link" *ngFor="let route of routes">{{route.title}}</li>
+    </ul>
+</nav>

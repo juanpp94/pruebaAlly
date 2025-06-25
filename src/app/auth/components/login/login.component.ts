@@ -26,6 +26,8 @@ export class LoginComponent {
     console.log(user);
     if(user === undefined) {
       this.loginError = true;
+    } else {
+      this.router.navigateByUrl("/")
     }
   }
 
@@ -33,12 +35,7 @@ export class LoginComponent {
     this.router.navigateByUrl('/auth/register');
   }
 
- nextUser = (response: User | undefined) => {
-  if(response === undefined) {
-    this.loginError = true;
-  }
-   console.log(response);
- }
+
 
  errorGettingNextUser = (error: any) => {
   console.log(error);

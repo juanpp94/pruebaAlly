@@ -3,6 +3,7 @@ import { User } from '../../../../app/core/models/user.interface';
 import { CountryService } from 'src/app/core/services/country.service';
 import { TaskService } from 'src/app/core/services/task.service';
 import { UserService } from 'src/app/core/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,11 +25,12 @@ export class DashboardComponent {
   perPage: number = 2;
   totalPages: number = 0;
 
-  constructor(private countryService: CountryService, private taskService: TaskService, private userService: UserService) {
+  constructor(private countryService: CountryService, private taskService: TaskService, private userService: UserService, private router: Router) {
 
   }
 
   ngOnInit() {
+    console.log('entre al dashboard',this.router);
     this.getCountries();
     this.getTasks();
     this.getUsers();

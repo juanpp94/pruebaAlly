@@ -44,11 +44,17 @@ constructor(private taskService: TaskService, private userService: UserService) 
   }
 
   addUsers() {
-    for(let i = 0; i < this.users.length; i++) {
-      this.users[i]['fechaRegistro'] = new Date();
-      this.users[i]['fechaUltimoLogin'] = new Date();
+    let users = this.getUsers();
+    if(users) {
+      this.userService.addUsers(users);
+    } else {
+      this.userService.addUsers([]);
     }
-    this.userService.addUsers(this.users);
+
+  }
+
+  getUsers() {
+    return this.userService.getUsers();
   }
 
   addTasks() {

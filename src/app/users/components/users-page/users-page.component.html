@@ -1,0 +1,44 @@
+<section class="user-content">
+        <div class="card-container">
+              <div class="card-info">
+                <header >
+                  <p class="title">USUARIOS</p>
+                </header>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Email</th>
+                      <th>Fecha Registro</th>
+                      <th>Último Login</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of usersPage">
+                      <td>{{ user.nombre }}</td>
+                      <td>{{ user.email }}</td>
+                      <td>{{ user.fechaRegistro | formatDateTime }}</td>
+                      <td>{{ user.fechaUltimoLogin | formatDateTime }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <footer>
+                  <p>{{ rangeText() }}</p>
+
+                  <div class="table-navigation">
+                      <button class="nav-button" (click)="firstPage()" [disabled]="currentPage === 1">Primero</button>
+                      <button class="nav-button" (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+                      <button class="current-page">{{currentPage}}</button>
+                      <button class="nav-button" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+                      <button class="nav-button" (click)="lastPage()" [disabled]="currentPage === totalPages">Último</button>
+                  </div>
+                </footer>
+
+
+
+
+              </div>
+        </div>
+    </section>

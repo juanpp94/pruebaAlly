@@ -101,4 +101,17 @@
       }
 
     }
+
+    .error-message {
+          background: red;
+          width: 40%;
+          height: auto;
+          //padding: 0px 10px;
+          margin: 10px 0px;
+          border-radius: 10px;
+          p {
+            margin: 10px;
+            color: white;
+          }
+        }
 }

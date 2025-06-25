@@ -1,0 +1,135 @@
+.weather-content {
+        display: flex;
+        justify-content: space-around;
+        z-index: 1;
+        .first-column, .second-column, .third-column {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          gap: 20px;
+          bottom: 80px;
+          //top: 20px;
+          .card-container {
+            width: 100%;
+            border:none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2); /* Sombra exterior */
+
+            .timezones {
+              li {
+                list-style: none;
+              }
+            }
+
+
+            .card-info {
+              border:none;
+              width: 100%;
+              border-radius: 4px;
+              overflow: hidden;
+              background: white;
+
+              header {
+                background: #f8f8f8;
+                margin: 0;
+                padding: 0px 3px 0px 3px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+
+
+                p {
+                  margin: 0;
+                  color: #0161f2;
+                  font-weight: 600;
+
+                }
+              }
+
+              p {
+                padding: 0px 20px 0px 20px;
+              }
+
+              .todo-list {
+            list-style: none;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            li {
+              overflow-wrap: anywhere;
+            }
+            }
+
+            .todo-list li::before {
+            content: "\2022"; /* Código Unicode para un punto */
+            color: #E0B046; /* Color de la viñeta */
+            font-size: 2em; /* Tamaño de la viñeta */
+            padding-right: 0.5em; /* Espacio entre la viñeta y el texto */
+            }
+
+            .todo-list li.completed::before {
+            color:green;
+            }
+
+
+
+            .weather-container {
+              margin: 15px 0px 0px 0px;
+              display: flex;
+              gap: 50px;
+
+              .weather-image {
+                width: 10%;
+                padding: 0px 0px 0px 20px;
+
+                img {
+                  width: 100%;
+                }
+              }
+            }
+
+            .country {
+              display: flex;
+              gap: 20px;
+              align-items: center;
+              width: 20%;
+              padding: 8px 12px;
+              cursor: pointer;
+              transition: background 0.3s ease;
+
+              img {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                object-fit: cover;
+                display: block;
+                margin-left: 10px
+              }
+
+              p {
+                cursor: pointer;
+              }
+
+
+            }
+
+            .country:hover {
+              background: blue;
+            }
+
+            .country:hover p {
+              text-decoration: underline;
+            }
+
+
+            }
+
+
+          }
+        }
+    }
