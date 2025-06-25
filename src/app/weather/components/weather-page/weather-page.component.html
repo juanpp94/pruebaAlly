@@ -4,7 +4,7 @@
         <app-todo-list [tasks]="tasks"></app-todo-list>
       </div>
       <div class="second-column">
-        <app-country-weather-card [countryWeatherInfo]="countryWeatherInfo"></app-country-weather-card>
+        <app-country-weather-card *ngIf="countryWeatherInfo" [countryWeatherInfo]="countryWeatherInfo"></app-country-weather-card>
 
         <app-countries-timezones-list [timezones]="selectedCountry?.timezones" (onSelectedTimezone)="getTimeAndDate($event)"></app-countries-timezones-list>
 

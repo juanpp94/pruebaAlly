@@ -32,23 +32,28 @@ export class RegisterComponent {
 
   register() {
     this.registerError = false;
-    let registrationStatus = this.authService.register(this.emailValue,this.passwordValue1,this.nameValue);
-    if(registrationStatus) {
-      console.log('registro exitoso');
-      this.router.navigateByUrl("/weather")
-    } else {
-      console.log('registro no exitoso');
+    if(this.emailValue === '' || this.nameValue === '' || this.passwordValue1 === '' || this.passwordValue2 === '') {
       this.registerError = true;
+      this.errorMessage = 'All the fields are required';
+    }
+    else {
+      let registrationStatus = this.authService.register(this.emailValue,this.passwordValue1,this.nameValue);
+    if(registrationStatus) {
+      this.router.navigateByUrl("/weather")
+      localStorage.setItem('isLogin','yes');
+    } else {
+
+      this.registerError = true;
+      this.errorMessage = "The user was not registered";
+    }
     }
   }
 
   onNameChange(event: any) {
-    console.log(event.target.value);
+    this.registerError = false;
     if(this.nameValidation(event.target.value)) {
-      console.log('es valido');
       this.invalidName = false;
     } else {
-      console.log('es invalido');
       this.invalidName = true;
     }
   }
@@ -63,7 +68,7 @@ export class RegisterComponent {
   }
 
   onEmailChange(event: any) {
-    console.log(event.target.value);
+    this.registerError = false;
     if(this.emailValidation(event.target.value)) {
       this.invalidEmail = false;
     } else {
@@ -82,7 +87,7 @@ export class RegisterComponent {
   }
 
   onPassword1Change(event: any) {
-    console.log(event.target.value);
+    this.registerError = false;
     if(this.password1Validation(event.target.value)) {
       this.invalidPassword =  false;
     } else {
@@ -91,12 +96,12 @@ export class RegisterComponent {
   }
 
   onPassword2Change(event: any) {
+    this.registerError = false;
     if(this.password2Validation(event.target.value)) {
       this.unmatchingPassword = false;
     } else {
       this.unmatchingPassword = true;
     }
-    console.log(event.target.value);
   }
 
   password1Validation(password: string) {
@@ -115,19 +120,8 @@ export class RegisterComponent {
     }
   }
 
-  nextUser = (response: User) => {
-    console.log(response);
-    if(response === undefined) {
-      console.log('ok');
-    } else {
-      console.log('el usuario ya estaba registrado');
-      this.registerError = true;
-    }
-  }
 
-  goToLogin()  {
-    this.router.navigateByUrl('/auth/login');
-  }
+
 
 
 }

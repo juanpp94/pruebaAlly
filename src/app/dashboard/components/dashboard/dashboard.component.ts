@@ -30,7 +30,6 @@ export class DashboardComponent {
   }
 
   ngOnInit() {
-    console.log('entre al dashboard',this.router);
     this.getCountries();
     this.getTasks();
     this.getUsers();
@@ -63,9 +62,7 @@ export class DashboardComponent {
   }
 
   getTimeAndDate(timezone: string) {
-    console.log('timezone:',timezone);
     let dateAndTime = this.getDateTimeFromUTCOffset(timezone);
-    console.log(dateAndTime);
     this.currentDateAndTime = dateAndTime;
   }
 
@@ -89,7 +86,6 @@ export class DashboardComponent {
   private nextCountry = (response: any) => {
     this.countriesInfo.push(response[0]);
      this.selectedCountry = this.countriesInfo[0];
-     console.log(this.selectedCountry);
      this.getTimeAndDate(this.selectedCountry.timezones[0]);
   }
 

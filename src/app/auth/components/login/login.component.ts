@@ -19,26 +19,25 @@ export class LoginComponent {
   }
 
   login() {
-    this.loginError = false;
-    console.log(this.emailValue);
-    console.log(this.passwordValue);
-    let user = this.authService.login(this.emailValue, this.passwordValue);
-    console.log(user);
-    if(user === undefined) {
+    if(this.emailValue === '' || this.passwordValue === '') {
       this.loginError = true;
-    } else {
-      this.router.navigateByUrl("/")
+      this.errorMessage = 'All the fields are required';
+    }  else {
+       this.loginError = false;
+        let user = this.authService.login(this.emailValue, this.passwordValue);
+
+        if(user === undefined) {
+          this.loginError = true;
+        } else {
+          localStorage.setItem('isLogin','yes');
+          this.router.navigateByUrl("/")
+
+        }
+
     }
-  }
 
-  goToRegister() {
-    this.router.navigateByUrl('/auth/register');
   }
 
 
-
- errorGettingNextUser = (error: any) => {
-  console.log(error);
- }
 
 }

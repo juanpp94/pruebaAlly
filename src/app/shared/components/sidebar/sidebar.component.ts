@@ -14,6 +14,9 @@ export class SidebarComponent {
 
   constructor(private router: Router) {}
 
+  ngOnInit() {
+    this.activeRoute = this.router.url.slice(1);
+  }
 
   goTo(link: string) {
     this.activeRoute = link;

@@ -16,7 +16,6 @@ export class AuthService {
   login(email: string, password: string): User | undefined {
     let users: User[] | null = this.getUsers();
     let user;
-    console.log(users);
     if(users) {
       user = users.find(u => u.email === email && u.password === password);
     }
@@ -33,7 +32,6 @@ export class AuthService {
       if(user) {
         return false;
       } else {
-        console.log('no existe');
         this.addUser(users, name, email, password);
         return true;
       }
@@ -45,7 +43,6 @@ export class AuthService {
 
   addUser(users: User[], name: string, email: string, password: string) {
     users.push({nombre: name, email: email, password: password, fechaRegistro: new Date(), fechaUltimoLogin: new Date(), id: users.length + 1 })
-    console.log(users);
     localStorage.setItem('users', JSON.stringify(users));
   }
 
