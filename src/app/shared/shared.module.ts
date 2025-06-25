@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CardHeaderComponent } from './components/card-header/card-header.component';
 import { CardFooterComponent } from './components/card-footer/card-footer.component';
 import { TablePaginationComponent } from './components/table-pagination/table-pagination.component';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 
 
@@ -17,6 +18,7 @@ import { TablePaginationComponent } from './components/table-pagination/table-pa
     CardHeaderComponent,
     CardFooterComponent,
     TablePaginationComponent,
+    TodoListComponent,
   ],
   imports: [
     CommonModule
@@ -27,7 +29,8 @@ import { TablePaginationComponent } from './components/table-pagination/table-pa
     HeaderComponent,
     CardHeaderComponent,
     CardFooterComponent,
-    TablePaginationComponent
+    TablePaginationComponent,
+    TodoListComponent
   ]
 })
 export class SharedModule { }

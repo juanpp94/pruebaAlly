@@ -1,0 +1,11 @@
+<div class="card-container">
+            <div class="card-info">
+              <app-card-header title='PAÍSES DISPONIBLES'></app-card-header>
+              <picture (click)="selectCountry(country)" *ngFor="let country of countriesInfo" class="country">
+                <img [src]="country.flags.png" [alt]="country.flags.alt">
+                <p class="country-pointer">{{country.name.common}}</p>
+              </picture>
+
+
+            </div>
+         </div>

@@ -1,0 +1,19 @@
+<div class="card-container">
+            <div class="card-info">
+              <app-card-header title='CLIMA'></app-card-header>
+              <div class="weather-container">
+                <picture *ngIf="countryWeatherInfo" class="weather-image">
+                  <img *ngIf="countryWeatherInfo['weather'] && countryWeatherInfo['weather'].length > 0 && countryWeatherInfo['weather'][0]['main'] === 'Clouds'"  src="../../../../assets/nublado.png" alt="nublado">
+                  <img *ngIf="countryWeatherInfo['weather'] && countryWeatherInfo['weather'].length > 0 && countryWeatherInfo['weather'][0]['main'] === 'Clear'"  src="../../../../assets/soleado.png" alt="soleado">
+                  <img *ngIf="countryWeatherInfo['weather'] && countryWeatherInfo['weather'].length > 0 && countryWeatherInfo['weather'][0]['main'] === 'Rain' || countryWeatherInfo['weather'][0]['main'] === 'Drizzle' "  src="../../../../assets/lluvioso.png" alt="lluvioso">
+                </picture>
+                <div class="weather-info">
+                  <p> {{countryWeatherInfo?.main?.temp}} °C</p>
+                  <p *ngIf=" countryWeatherInfo?.weather && countryWeatherInfo?.weather.length > 0">{{countryWeatherInfo?.weather[0].main}} </p>
+                </div>
+
+              </div>
+
+
+            </div>
+         </div>
