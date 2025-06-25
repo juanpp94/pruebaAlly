@@ -1,5 +1,5 @@
 <div class="card-container">
-            <div class="card-info timezones" [ngStyle]="{'overflow-y': timezones.length > 3 ? 'scroll' : ''}">
+            <div class="card-info timezones" [ngStyle]="{'overflow-y': timezones?.length > 3 ? 'scroll' : ''}">
               <app-card-header title='ZONAS HORARIAS DISPONIBLES'></app-card-header>
               <ul>
                 <li  (click)="getTimeAndDate(timezone)" *ngFor="let timezone of timezones">

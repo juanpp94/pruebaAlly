@@ -23,6 +23,11 @@ export class SidebarComponent {
     this.router.navigateByUrl(`/${link}`);
   }
 
+  logout() {
+    localStorage.removeItem('isLogin');
+    this.router.navigateByUrl('/auth/login');
+  }
+
 
 
 }
