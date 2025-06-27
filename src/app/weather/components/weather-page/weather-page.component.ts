@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/core/models/user.interface';
 import { CountryService } from 'src/app/core/services/country.service';
 import { TaskService } from 'src/app/core/services/task.service';
@@ -18,6 +19,8 @@ export class WeatherPageComponent {
     currentDateAndTime: any = {};
     countryWeatherInfo: any = {};
     tasks: any[] = [];
+    countrySubscription!: Subscription
+    weatherSubscription!: Subscription
 
 
     constructor(private countryService: CountryService, private taskService: TaskService, private router: Router) {
@@ -47,7 +50,7 @@ export class WeatherPageComponent {
 
 
     getCountryWeather() {
-      this.countryService.getWeather(this.selectedCountry?.capital).subscribe({
+      this.weatherSubscription = this.countryService.getWeather(this.selectedCountry?.capital).subscribe({
         next: this.nextWeather
       })
     }
@@ -63,10 +66,21 @@ export class WeatherPageComponent {
     }
 
     getCountry(country: string) {
-      this.countryService.getCountry(country).subscribe({
+      this.countrySubscription = this.countryService.getCountry(country).subscribe({
         next: this.nextCountry,
         complete: this.nextCountryWeather
       });
+    }
+
+
+    ngOnDestroy() {
+      if(this.countrySubscription) {
+        this.countrySubscription.unsubscribe();
+      }
+
+      if(this.weatherSubscription) {
+        this.weatherSubscription.unsubscribe();
+      }
     }
 
 
